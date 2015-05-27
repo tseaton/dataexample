@@ -13,22 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class SprocketController {
 
     @Autowired
     SprocketRepository sprocketRepository;
 
-    @ResponseBody
     @RequestMapping(value = "/sprockets/", method = {RequestMethod.GET})
     public List<Sprocket> getSprockets() {
         return Lists.newArrayList(sprocketRepository.findAll());
     }
 
-    @ResponseBody
     @RequestMapping(value = "/sprockets/{sku}", method = {RequestMethod.GET})
     public Sprocket getSprocketBySku(@PathVariable("sku") String sku) {
         return sprocketRepository.findBySku(sku);
