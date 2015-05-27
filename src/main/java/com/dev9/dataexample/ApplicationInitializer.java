@@ -1,12 +1,10 @@
 package com.dev9.dataexample;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@EnableAutoConfiguration
-@ComponentScan
+@SpringBootApplication
 @EnableJpaRepositories(basePackages = {"com.dev9.dataexample.repo"})
 public class ApplicationInitializer {
 
