@@ -11,5 +11,6 @@ import java.util.List;
 public interface SprocketRepository extends CrudRepository<Sprocket, Long> {
 
     Sprocket findBySku(String sku);
+    List<Sprocket> findByBrand(String brand);
 
 }
