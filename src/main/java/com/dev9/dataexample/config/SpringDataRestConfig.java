@@ -9,8 +9,8 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 @Import(RepositoryRestMvcConfiguration.class)
 public class SpringDataRestConfig extends RepositoryRestMvcConfiguration {
 
-//    @Override
-//    public void configureRepositoryRestConfiguration(RepositoryRestConfiguration repositoryRestConfiguration) {
-//        repositoryRestConfiguration.setBaseUri("inventory/");
-//    }
+    @Override
+    public void configureRepositoryRestConfiguration(RepositoryRestConfiguration repositoryRestConfiguration) {
+        repositoryRestConfiguration.setBaseUri("inventory/");
+    }
 }
