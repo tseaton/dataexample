@@ -39,7 +39,7 @@ public class SprocketController {
         sprocketRepository.save(sprocket);
     }
 
-    @RequestMapping(value = "/sprocket/sku/{sku}", method = {RequestMethod.GET})
+    @RequestMapping(value = "/sprockets/sku/{sku}", method = {RequestMethod.GET})
     public Sprocket getSprocketBySku(@PathVariable("sku") String sku) {
         return sprocketRepository.findBySku(sku);
     }
