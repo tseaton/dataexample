@@ -28,7 +28,7 @@ public class SprocketController {
         return Lists.newArrayList(sprocketRepository.findAll());
     }
 
-    @RequestMapping(value = "/sprockets/{brand}", method = {RequestMethod.GET})
+    @RequestMapping(value = "/sprockets/brand/{brand}", method = {RequestMethod.GET})
     public List<Sprocket> getSprockets(@PathVariable("brand") String brand) {
         return sprocketRepository.findByBrand(brand);
     }
@@ -39,7 +39,7 @@ public class SprocketController {
         sprocketRepository.save(sprocket);
     }
 
-    @RequestMapping(value = "/sprocket/{sku}", method = {RequestMethod.GET})
+    @RequestMapping(value = "/sprocket/sku/{sku}", method = {RequestMethod.GET})
     public Sprocket getSprocketBySku(@PathVariable("sku") String sku) {
         return sprocketRepository.findBySku(sku);
     }
