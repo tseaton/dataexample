@@ -4,14 +4,14 @@ package com.dev9.dataexample.controller;
 import com.dev9.dataexample.entity.Sprocket;
 import com.dev9.dataexample.repo.SprocketRepository;
 import com.google.common.collect.Lists;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,5 +43,14 @@ public class SprocketController {
     public Sprocket getSprocketBySku(@PathVariable("sku") String sku) {
         return sprocketRepository.findBySku(sku);
     }
-
+    
+    @RequestMapping(value = "/sprockets/sku/{sku}", method = {RequestMethod.DELETE})
+    public void deleteSprocketBySku(@PathVariable("sku") String sku) {
+    	Sprocket sprocket = sprocketRepository.findBySku(sku);
+    	if (sprocket == null) {
+    		throw new ResourceNotFoundException("SKU "  + sku + " not Found.");
+    	}
+    	long id = sprocket.getId();
+        sprocketRepository.delete(id);
+    }
 }

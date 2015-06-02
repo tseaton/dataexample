@@ -22,6 +22,10 @@ public class Sprocket implements Serializable {
     private String sku;
 
     private String brand;
+    
+    public long getId() {
+    	return id;
+    }
 
     public String getDescription() {
         return description;
