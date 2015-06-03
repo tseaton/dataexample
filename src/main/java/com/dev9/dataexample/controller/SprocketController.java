@@ -6,7 +6,6 @@ import com.dev9.dataexample.repo.SprocketRepository;
 import com.google.common.collect.Lists;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,11 +45,6 @@ public class SprocketController {
     
     @RequestMapping(value = "/sprockets/sku/{sku}", method = {RequestMethod.DELETE})
     public void deleteSprocketBySku(@PathVariable("sku") String sku) {
-    	Sprocket sprocket = sprocketRepository.findBySku(sku);
-    	if (sprocket == null) {
-    		throw new ResourceNotFoundException("SKU "  + sku + " not Found.");
-    	}
-    	long id = sprocket.getId();
-        sprocketRepository.delete(id);
+    	sprocketRepository.deleteBySku(sku);
     }
 }
